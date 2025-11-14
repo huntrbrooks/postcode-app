@@ -3,6 +3,7 @@
     "Segoe UI", sans-serif;
   color: #f8fbff;
   background-color: #05060b;
+  color-scheme: dark;
   --surface: rgba(9, 10, 20, 0.85);
   --surface-alt: rgba(18, 20, 40, 0.85);
   --text-muted: rgba(248, 251, 255, 0.75);
@@ -10,6 +11,20 @@
   --success: #73f3c4;
   --error: #ff6b6b;
   --info: #7dd3fc;
+  --safe-top: 0px;
+  --safe-right: 0px;
+  --safe-bottom: 0px;
+  --safe-left: 0px;
+  --content-max: 960px;
+}
+
+@supports (top: env(safe-area-inset-top)) {
+  :root {
+    --safe-top: env(safe-area-inset-top);
+    --safe-right: env(safe-area-inset-right);
+    --safe-bottom: env(safe-area-inset-bottom);
+    --safe-left: env(safe-area-inset-left);
+  }
 }
 
 *,
@@ -23,24 +38,31 @@ body {
   min-height: 100vh;
   background: radial-gradient(circle at top, #132347, #05060b 60%);
   color: inherit;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 .page {
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 1.25rem 3rem;
-  gap: 2rem;
+  width: min(var(--content-max), 100%);
+  margin: 0 auto;
+  padding: calc(1.5rem + var(--safe-top))
+    calc(clamp(1rem, 4vw, 2.5rem) + var(--safe-right))
+    calc(2.5rem + var(--safe-bottom))
+    calc(clamp(1rem, 4vw, 2.5rem) + var(--safe-left));
+  gap: clamp(1.5rem, 4vw, 3rem);
 }
 
 .shell {
-  width: min(960px, 100%);
+  width: min(var(--content-max), 100%);
   background: var(--surface);
   border-radius: 28px;
   border: 1px solid var(--border);
   backdrop-filter: blur(14px);
-  padding: clamp(1.75rem, 4vw, 3rem);
+  padding: clamp(1.25rem, 5vw, 3rem);
   box-shadow: 0 40px 120px rgba(0, 0, 0, 0.35);
 }
 
@@ -64,6 +86,7 @@ body {
 
 .hero .lede {
   margin-top: 1rem;
+  max-width: 60ch;
   font-size: 1.05rem;
   line-height: 1.7;
   color: var(--text-muted);
@@ -71,10 +94,14 @@ body {
 
 .actions {
   margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
 }
 
 .cta {
   width: 100%;
+  min-height: 3.5rem;
   border: none;
   border-radius: 999px;
   padding: 0.95rem 1.5rem;
@@ -99,10 +126,10 @@ body {
 }
 
 .status {
-  margin-top: 1rem;
   font-size: 0.95rem;
   color: var(--text-muted);
   min-height: 1.5rem;
+  text-align: center;
 }
 
 .status-requesting,
@@ -121,7 +148,7 @@ body {
 .result {
   background: var(--surface-alt);
   border-radius: 24px;
-  padding: 2rem;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
   border: 1px solid var(--border);
 }
 
@@ -173,6 +200,7 @@ body {
 .meta-row dd {
   margin: 0;
   font-size: 1.05rem;
+  word-break: break-word;
 }
 
 .timestamp {
@@ -185,20 +213,79 @@ body {
   text-align: center;
   color: var(--text-muted);
   font-size: 0.9rem;
+  width: min(var(--content-max), 100%);
 }
 
 .site-footer a {
   color: inherit;
 }
 
+@media (max-width: 768px) {
+  .hero {
+    text-align: center;
+  }
+
+  .hero .lede {
+    margin-inline: auto;
+  }
+
+  .actions {
+    margin-bottom: 2rem;
+  }
+
+  .status {
+    font-size: 0.9rem;
+  }
+}
+
 @media (max-width: 640px) {
   .shell {
     border-radius: 20px;
-    padding: 1.75rem;
+    padding: 1.5rem;
   }
 
   .result {
-    padding: 1.5rem;
+    border-radius: 18px;
+  }
+
+  .meta {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding-top: calc(1.25rem + var(--safe-top));
+    padding-bottom: calc(2rem + var(--safe-bottom));
+  }
+
+  .hero h1 {
+    font-size: clamp(1.9rem, 10vw, 2.4rem);
+  }
+
+  .hero .lede {
+    font-size: 0.95rem;
+  }
+
+  .result {
+    padding: 1.25rem;
+  }
+
+  .postcode-badge {
+    font-size: clamp(2rem, 12vw, 2.75rem);
+  }
+
+  .address {
+    font-size: 1rem;
+  }
+
+  .meta {
+    grid-template-columns: 1fr;
+  }
+
+  .cta {
+    font-size: 1rem;
+    min-height: 3.25rem;
   }
 }
 
