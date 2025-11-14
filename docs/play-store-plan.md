@@ -11,8 +11,10 @@
 3. ✅ Privacy policy lives at `/privacy.html` and is linked in the footer.
 
 ## 3. Bubblewrap / TWA Workflow
+See `docs/twa/README.md` for the step-by-step command list and recommended answers (host, package ID, signing key details).
+
 ### Required metadata
-- **Manifest URL**: `https://postcode-36hfme5t7-gerard-grenvilles-projects.vercel.app/manifest.webmanifest` (swap for final vanity domain when available).
+- **Manifest URL**: `https://postcode-1413q3xkn-gerard-grenvilles-projects.vercel.app/manifest.webmanifest` (swap for final vanity domain when available).
 - **Package ID suggestion**: `app.postcode.locator` (reverse-DNS, unique per Play Console).
 - **App label**: `Postcode Locator`.
 - **Versioning**: start with `versionName=1.0.0`, `versionCode=1`; increment versionCode on each upload.
@@ -33,14 +35,7 @@
    ```
 2. Bootstrap the project (example values; update as needed):
    ```
-   bubblewrap init \
-     --manifest https://postcode-36hfme5t7-gerard-grenvilles-projects.vercel.app/manifest.webmanifest \
-     --directory twa-postcode \
-     --packageId app.postcode.locator \
-     --signingKeyPath signing-key.jks \
-     --signingKeyPassword <password> \
-     --signingKeyAlias postcode \
-     --signingKeyAliasPassword <password>
+   npm run twa:init
    ```
 3. Review the generated Android project (Android Studio) and update:
    - App name, versionCode, versionName

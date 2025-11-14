@@ -7,13 +7,16 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "icons": "node scripts/generate-icons.mjs"
+    "icons": "node scripts/generate-icons.mjs",
+    "twa:init": "bubblewrap init --manifest https://postcode-1413q3xkn-gerard-grenvilles-projects.vercel.app/manifest.webmanifest --directory twa-postcode",
+    "twa:build": "cd twa-postcode && bubblewrap build"
   },
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@bubblewrap/cli": "^1.24.1",
     "@types/node": "^24.10.1",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.3",
