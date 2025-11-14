@@ -134,6 +134,25 @@ export default function App() {
   const isBusy = status === "requesting" || status === "reverse-geocoding";
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("demo")) {
+      const demoResult: LookupResult = {
+        postcode: "3121",
+        address: "Rotherwood Street, Richmond, Melbourne, Victoria, Australia",
+        latitude: -37.81941,
+        longitude: 144.99182,
+        city: "Melbourne",
+        state: "Victoria",
+        country: "Australia",
+      };
+      setResult(demoResult);
+      setStatus("success");
+      setLastUpdated(new Date());
+      setShouldScrollAfterSuccess(false);
+    }
+  }, []);
+
+  useEffect(() => {
     if (
       !shouldScrollAfterSuccess ||
       status !== "success" ||

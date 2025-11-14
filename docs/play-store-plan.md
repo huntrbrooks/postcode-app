@@ -61,7 +61,7 @@ See `docs/twa/README.md` for the step-by-step command list and recommended answe
 | --- | --- | --- |
 | Developer account | ☐ | $25 one-time |
 | App name & description | ☐ | Use marketing copy from hero |
-| Screenshots (2+) | ☐ | Capture on iPhone 15 / Android emulator |
+| Screenshots (2+) | ✅ | `public/screenshots/iphone15-hero.png` & `iphone15-postcode.png` (capture more as needed) |
 | Feature graphic 1024×500 | ✅ | `public/feature-graphic.png` |
 | High-res icon 512×512 | ☐ | Already generated (`public/icons/icon-512.png`) |
 | Privacy policy URL | ✅ | `/privacy.html` |
@@ -69,7 +69,7 @@ See `docs/twa/README.md` for the step-by-step command list and recommended answe
 | Content rating questionnaire | ☐ | Non-sensitive |
 
 **Asset specs**
-- **Phone screenshots**: at least 2; recommended resolution 1340×2740 (Pixel 7 Pro). Capture flow after permission grant + result view.
+- **Phone screenshots**: stored in `public/screenshots/`. Regenerate via `npx playwright@1.48.2 screenshot --device "iPhone 15 Pro Max" <url> <output>`.
 - **Feature graphic**: generated via `npm run feature-graphic` (`public/feature-graphic.png`). Re-export if branding changes.
 - **Adaptive icon layers**: already generated (`public/icons/adaptive-foreground.png`, `public/icons/adaptive-background.png`); ensure they remain centered within the safe zone when imported into Android Studio.
 - **Privacy policy**: create `/privacy` page (Markdown or React route) explaining GPS usage, storage, third-party APIs (OpenStreetMap).
