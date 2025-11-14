@@ -1,0 +1,213 @@
+:root {
+  font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  color: #f8fbff;
+  background-color: #05060b;
+  --surface: rgba(9, 10, 20, 0.85);
+  --surface-alt: rgba(18, 20, 40, 0.85);
+  --text-muted: rgba(248, 251, 255, 0.75);
+  --border: rgba(255, 255, 255, 0.08);
+  --success: #73f3c4;
+  --error: #ff6b6b;
+  --info: #7dd3fc;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #132347, #05060b 60%);
+  color: inherit;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.25rem 3rem;
+  gap: 2rem;
+}
+
+.shell {
+  width: min(960px, 100%);
+  background: var(--surface);
+  border-radius: 28px;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  padding: clamp(1.75rem, 4vw, 3rem);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.35);
+}
+
+.hero {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.25rem, 4vw, 3.2rem);
+  margin: 0;
+}
+
+.hero .lede {
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.actions {
+  margin-bottom: 2.5rem;
+}
+
+.cta {
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 0.95rem 1.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(120deg, #00dbde, #fc00ff);
+  color: #05060b;
+  box-shadow: 0 0 30px rgba(252, 0, 255, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.cta:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.cta:not(:disabled):hover {
+  transform: translateY(-2px);
+}
+
+.status {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  min-height: 1.5rem;
+}
+
+.status-requesting,
+.status-reverse-geocoding {
+  color: var(--info);
+}
+
+.status-success {
+  color: var(--success);
+}
+
+.status-error {
+  color: var(--error);
+}
+
+.result {
+  background: var(--surface-alt);
+  border-radius: 24px;
+  padding: 2rem;
+  border: 1px solid var(--border);
+}
+
+.label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.postcode-badge {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+}
+
+.address {
+  font-size: 1.05rem;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 0;
+}
+
+.meta-row {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 1rem;
+  border: 1px solid var(--border);
+}
+
+.meta-row dt {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.meta-row dd {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.timestamp {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.site-footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.site-footer a {
+  color: inherit;
+}
+
+@media (max-width: 640px) {
+  .shell {
+    border-radius: 20px;
+    padding: 1.75rem;
+  }
+
+  .result {
+    padding: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+

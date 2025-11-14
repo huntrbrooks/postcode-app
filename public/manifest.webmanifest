@@ -1,0 +1,18 @@
+{
+  "name": "Postcode Locator",
+  "short_name": "Postcode",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#00dbde",
+  "description": "Use your phone's GPS to fetch the nearest postcode via OpenStreetMap.",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "256x256",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
+
