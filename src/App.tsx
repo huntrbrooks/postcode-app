@@ -200,7 +200,11 @@ export default function App() {
       <footer className="site-footer">
         <p>
           Powered by the HTML5 Geolocation API and OpenStreetMap’s Nominatim
-          Reverse Geocoding service.
+          Reverse Geocoding service.{" "}
+          <a href="/privacy.html" rel="noopener noreferrer">
+            Privacy policy
+          </a>
+          .
         </p>
       </footer>
     </div>

@@ -6,9 +6,9 @@
 - ✅ Offline page and caching strategy ready for Lighthouse/TWA requirements.
 
 ## 2. Remaining PWA polish
-1. Generate adaptive icon foreground/background layers (1024×1024 PNG) for Play listing.
+1. ✅ Adaptive icon foreground/background exported to `public/icons/adaptive-foreground.png` and `public/icons/adaptive-background.png`.
 2. Capture screenshots (phone 6.7″) once Bubblewrap build is running.
-3. Draft privacy policy that explains GPS usage + third-party APIs (link needed for Play listing).
+3. ✅ Privacy policy lives at `/privacy.html` and is linked in the footer.
 
 ## 3. Bubblewrap / TWA Workflow
 ### Required metadata
@@ -69,14 +69,14 @@
 | Screenshots (2+) | ☐ | Capture on iPhone 15 / Android emulator |
 | Feature graphic 1024×500 | ☐ | Derive from hero gradient |
 | High-res icon 512×512 | ☐ | Already generated (`public/icons/icon-512.png`) |
-| Privacy policy URL | ☐ | Host on site `/privacy` |
+| Privacy policy URL | ✅ | `/privacy.html` |
 | Data safety form | ☐ | Location access, no data collection stored |
 | Content rating questionnaire | ☐ | Non-sensitive |
 
 **Asset specs**
 - **Phone screenshots**: at least 2; recommended resolution 1340×2740 (Pixel 7 Pro). Capture flow after permission grant + result view.
 - **Feature graphic**: 1024×500 PNG/JPG, no alpha; reuse gradient background with postcode typography.
-- **Adaptive icon layers**: create foreground/background 432×432 within 108×108dp safe zone; export 1024×1024 PNGs for Android Studio.
+- **Adaptive icon layers**: already generated (`public/icons/adaptive-foreground.png`, `public/icons/adaptive-background.png`); ensure they remain centered within the safe zone when imported into Android Studio.
 - **Privacy policy**: create `/privacy` page (Markdown or React route) explaining GPS usage, storage, third-party APIs (OpenStreetMap).
 - **Contact info**: supply support email (can reuse repo owner email).
 
