@@ -18,8 +18,8 @@ Bubblewrap will fetch the production manifest (`https://postcode-1413q3xkn-gerar
 | --- | --- |
 | Host | `https://postcode-1413q3xkn-gerard-grenvilles-projects.vercel.app` (swap for custom domain later) |
 | Start URL | `/` |
-| App Name | `Postcode Locator` |
-| Launcher Name | `Postcode` |
+| App Name | `Postcode Revealer` |
+| Launcher Name | `Revealer` |
 | Package ID | `app.postcode.locator` |
 | Version Code | `1` (increment for every release) |
 | Display | `standalone` |
@@ -35,7 +35,7 @@ Bubblewrap will fetch the production manifest (`https://postcode-1413q3xkn-gerar
 | Signing key alias | `postcode` |
 
 When asked to create the signing key, enter:
-- Full name / org info (anything descriptive, e.g., "Postcode Locator").
+- Full name / org info (anything descriptive, e.g., "Postcode Revealer").
 - Country code: `AU` (or your actual country).
 - Choose strong keystore + key passwords and record them securely. They will be needed for every `bubblewrap build` and for Google Play’s Play App Signing enrollment.
 

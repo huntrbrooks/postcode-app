@@ -165,10 +165,10 @@ export default function App() {
       <main className="shell" role="main">
         <header className="hero">
           <p className="eyebrow">React + TypeScript web app</p>
-          <h1>Find the postcode you are in</h1>
+          <h1>Postcode Revealer</h1>
           <p className="lede">
             Built in Cursor with Vite, this responsive experience runs in Safari on iOS
-            and Chrome on Android. We only ask for your GPS location after you tap the button.
+            and Chrome on Android. Postcode Revealer only asks for your GPS location after you tap the button.
           </p>
         </header>
 

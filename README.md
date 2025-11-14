@@ -1,4 +1,4 @@
-# Postcode Locator
+# Postcode Revealer
 
 Responsive React + TypeScript web app that runs completely in the browser, asks for your location inside a user gesture, and reverse geocodes the coordinates with OpenStreetMap’s Nominatim API to display the nearest postcode.
 

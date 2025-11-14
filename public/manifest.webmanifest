@@ -1,6 +1,6 @@
 {
-  "name": "Postcode Locator",
-  "short_name": "Postcode",
+  "name": "Postcode Revealer",
+  "short_name": "Revealer",
   "description": "Use your phone's GPS to fetch the nearest postcode via OpenStreetMap.",
   "start_url": "/",
   "scope": "/",
@@ -40,7 +40,7 @@
     {
       "name": "Fetch postcode",
       "short_name": "Get postcode",
-      "description": "Open Postcode Locator to request your GPS position.",
+      "description": "Open Postcode Revealer to request your GPS position.",
       "url": "/"
     }
   ]

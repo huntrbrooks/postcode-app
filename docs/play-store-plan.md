@@ -1,7 +1,7 @@
 # Play Store Delivery Plan
 
 ## 1. PWA Readiness (DONE)
-- ✅ Manifest includes start URL `/`, portrait display, icons (192/512/512 maskable), shortcut, categories.
+- ✅ Manifest includes start URL `/`, portrait display, icons (192/512/512 maskable), shortcut, categories, and branding for Postcode Revealer.
 - ✅ Service worker registered in production, precaches shell + offline fallback.
 - ✅ Offline page and caching strategy ready for Lighthouse/TWA requirements.
 
@@ -16,7 +16,7 @@ See `docs/twa/README.md` for the step-by-step command list and recommended answe
 ### Required metadata
 - **Manifest URL**: `https://postcode-1413q3xkn-gerard-grenvilles-projects.vercel.app/manifest.webmanifest` (swap for final vanity domain when available).
 - **Package ID suggestion**: `app.postcode.locator` (reverse-DNS, unique per Play Console).
-- **App label**: `Postcode Locator`.
+- **App label**: `Postcode Revealer`.
 - **Versioning**: start with `versionName=1.0.0`, `versionCode=1`; increment versionCode on each upload.
 - **Signing key**: generate once and store securely. Example:
   ```
