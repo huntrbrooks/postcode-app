@@ -1,17 +1,47 @@
 {
   "name": "Postcode Locator",
   "short_name": "Postcode",
-  "start_url": ".",
-  "display": "standalone",
-  "background_color": "#030712",
-  "theme_color": "#00dbde",
   "description": "Use your phone's GPS to fetch the nearest postcode via OpenStreetMap.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#05060b",
+  "theme_color": "#05060b",
+  "categories": ["navigation", "productivity"],
+  "prefer_related_applications": false,
   "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
     {
       "src": "/vite.svg",
       "sizes": "256x256",
       "type": "image/svg+xml",
       "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Fetch postcode",
+      "short_name": "Get postcode",
+      "description": "Open Postcode Locator to request your GPS position.",
+      "url": "/"
     }
   ]
 }
