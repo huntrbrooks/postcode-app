@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import ResultPanel from "./components/ResultPanel";
 import type { LocationStatus, LookupResult } from "./types/location";
 import { composeAddress, reverseGeocode } from "./lib/nominatim";
@@ -22,20 +22,27 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<LookupResult | null>(null);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  const [shouldScrollAfterSuccess, setShouldScrollAfterSuccess] =
+    useState(false);
+  const resultRef = useRef<HTMLElement | null>(null);
 
   const handleGetPostcode = () => {
     if (status === "requesting" || status === "reverse-geocoding") {
       return;
     }
 
+    setShouldScrollAfterSuccess(false);
     setStatus("requesting");
     setError(null);
 
     if (!("geolocation" in navigator)) {
       setStatus("error");
       setError("Geolocation is not supported in this browser.");
+      setShouldScrollAfterSuccess(false);
       return;
     }
+
+    setShouldScrollAfterSuccess(true);
 
     navigator.geolocation.getCurrentPosition(
       async (position) => {
@@ -80,6 +87,7 @@ export default function App() {
           setResult(null);
           setLastUpdated(null);
           setStatus("error");
+          setShouldScrollAfterSuccess(false);
           setError(
             lookupError instanceof Error
               ? lookupError.message
@@ -91,6 +99,7 @@ export default function App() {
         setResult(null);
         setLastUpdated(null);
         setStatus("error");
+        setShouldScrollAfterSuccess(false);
 
         switch (geoError.code) {
           case geoError.PERMISSION_DENIED:
@@ -124,6 +133,33 @@ export default function App() {
 
   const isBusy = status === "requesting" || status === "reverse-geocoding";
 
+  useEffect(() => {
+    if (
+      !shouldScrollAfterSuccess ||
+      status !== "success" ||
+      !result ||
+      !resultRef.current
+    ) {
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const timeoutId = window.setTimeout(() => {
+      resultRef.current?.scrollIntoView({
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+        block: "start",
+      });
+      setShouldScrollAfterSuccess(false);
+    }, prefersReducedMotion ? 0 : 250);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [result, shouldScrollAfterSuccess, status]);
+
   return (
     <div className="page">
       <main className="shell" role="main">
@@ -153,7 +189,11 @@ export default function App() {
         </section>
 
         {result && (
-          <ResultPanel result={result} lastUpdated={lastUpdated} />
+          <ResultPanel
+            ref={resultRef}
+            result={result}
+            lastUpdated={lastUpdated}
+          />
         )}
       </main>
 
